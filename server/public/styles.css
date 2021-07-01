@@ -2,3 +2,10 @@ header {
     background-color: rgb(82, 182, 235);
     margin: 0px 0px 0px 0px;
 }
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
