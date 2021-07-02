@@ -59,7 +59,21 @@ router.put('/:id', (req, res) => {
 // DELETE
 
 router.delete('/:id', (req, res) => {
-    console.log('inside delete', req.url);
-  })
+    console.log('inside router.delete', req.url);
+    console.log('request router parameters', req.params);
+    const koalaID= req.params.id;
+    
+    const queryText = `DELETE FROM koalas WHERE id = $1;`;
+    pool.query(queryText, [koalaID.id])
+
+    })
+    .then((response) => {
+        console.log('Deleted koala from dataset', ${response.rowCount ===1});
+        res.sendStatus(201);
+    })
+    .catch((error) => {
+        console.log(`Could not delete koala with id ${koalaID}`, error);
+        res.sendStatus(500);
+    })
 
 module.exports = koalaRouter;
