@@ -4,12 +4,12 @@ header {
     overflow: hidden;
 }
 
-input[type=text] {
+/* input[type=text] {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     background-color: lightblue;
-}
+} */
 img{
     width: 200px;
     float: left;
@@ -19,16 +19,11 @@ img{
     float: left;
     margin-top: 20px;
 }
-
-button{
-    padding : 8px 12px;  
-}
-
-h2 {
-  text-align: center;
-  padding: 20px 0;
-}
-
+    /* 
+    button{
+        padding : 8px 12px;  
+    } */
+/* 
 table {
     margin: auto;
     width: 100%;
@@ -106,6 +101,4 @@ tfoot tr td:nth-child(2) {
 
 tfoot tr td:nth-child(3) {
     color: #000;
-}
-
-.exceeded {
+} */
