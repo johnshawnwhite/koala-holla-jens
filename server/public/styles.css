@@ -1,12 +1,49 @@
 header {
     background-color: rgb(82, 182, 235);
     margin: 0px 0px 0px 0px;
+    overflow: hidden;
+}
+img{
+    width: 200px;
+    float: left;
+    margin: 20px;
+}
+.companyInfo{
+    float: left;
+    margin-top: 40px;
 }
 
-input[type=text] {
-    width: 55%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    background-color: lightblue;
+#addKoala{
+    margin: 24px 0px;
+}
+
+table{
+    text-align: center;
+}
+
+thead tr th:nth-child(1) {
+    width: 20%;
+}
+
+thead tr th:nth-child(2) {
+    width: 8%;
+}
+
+thead tr th:nth-child(3) {
+    width: 10%;
+}
+
+thead tr th:nth-child(4) {
+    width: 15%;
+}
+
+thead tr th:nth-child(5) {
+    width: 25%;
+}
+
+thead tr th:nth-child(6) {
+    width: 10%;
+}
+thead tr th:nth-child(7) {
+    width: 10%;
 }
