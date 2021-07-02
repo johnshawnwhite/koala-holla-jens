@@ -3,7 +3,6 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 const koalaRouter = require('./routes/koala.router');
-const { query } = require('express');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
