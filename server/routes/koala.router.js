@@ -23,9 +23,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log('Inside router.post', req);
     const koalaData = req.body;
-    const queryText = `INSERT INTO koalas ( name, gender, age, readyToTransfer, note)
+    const queryText = `INSERT INTO koalas ( name, gender, age, readyToTransfer, notes)
                       VALUE ($1, $2, $3, $4, $5);`;                     
-    pool.query(queryText, [koalaData.name, koalaData.gender, koalaData.age, koalaData.readyToTransfer, koalaData.note] )
+    pool.query(queryText, [koalaData.name, koalaData.gender, koalaData.age, koalaData.readyToTransfer, koalaData.notes] )
     .then((results) => {
       res.sendStatus(201);
     })
@@ -69,7 +69,7 @@ router.delete('/:id', (req, res) => {
     })
     .then((response) => {
         console.log('Deleted koala from dataset', ${response.rowCount ===1});
-        res.sendStatus(201);
+        res.sendStatus(202);
     })
     .catch((error) => {
         console.log(`Could not delete koala with id ${koalaID}`, error);
