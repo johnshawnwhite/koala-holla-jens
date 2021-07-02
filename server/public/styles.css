@@ -1,12 +1,111 @@
 header {
     background-color: rgb(82, 182, 235);
     margin: 0px 0px 0px 0px;
+    overflow: hidden;
 }
 
 input[type=text] {
-    width: 55%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     background-color: lightblue;
 }
+img{
+    width: 200px;
+    float: left;
+    margin: 20px;
+}
+.companyInfo{
+    float: left;
+    margin-top: 20px;
+}
+
+button{
+    padding : 8px 12px;  
+}
+
+h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+table {
+    margin: auto;
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+th,
+td {
+    border: 1px solid black;
+}
+
+tbody td {
+    text-align: center;
+    color: #000;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+thead th {
+    background-color: #6c7ae0;
+    color: #eee;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+tbody tr:nth-child(odd) {
+    background: #eee;
+}
+
+tbody tr:nth-child(even) {
+    background: #b1b1dd;
+}
+
+thead tr th:nth-child(1) {
+    width: 20%;
+}
+
+thead tr th:nth-child(2) {
+    width: 20%;
+}
+
+thead tr th:nth-child(3) {
+    width: 14%;
+}
+
+thead tr th:nth-child(4) {
+    width: 18%;
+}
+
+thead tr th:nth-child(5) {
+    width: 18%;
+}
+
+
+tfoot td {
+    color: #eee;
+    text-align: center;
+    background-color: #eee;
+    font-size: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+tfoot tr td:nth-child(1) {
+    background-color: #565b83;
+}
+
+tfoot tr td:nth-child(2) {
+    background-color: #6c7ae0;
+}
+
+tfoot tr td:nth-child(3) {
+    color: #000;
+}
+
+.exceeded {
