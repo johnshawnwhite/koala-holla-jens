@@ -10,31 +10,78 @@ $( document ).ready( function(){
 }); // end doc ready
 
 function setupClickListeners() {
-  $( '#addButton' ).on( 'click', function(){
-    console.log( 'in addButton on click' );
+  $( '#submitKoala' ).on( 'click', function(){
+    console.log( 'in submitKoala on click' );
     // get user input and put in an object
     // NOT WORKING YET :(
     // using a test object
     let koalaToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      readyForTransfer: 'testName',
-      notes: 'testName',
+       koalaName: $('#koalaName').val(),
+       koalaAge: $('#koalaAge').val(),
+       koalaGender: $('#koalaGender').val(),
+       readyToTransfer: $('#readyToTransfer').val(),
+       koalaNote: $('#koalaNote').val(),
     };
     // call saveKoala with the new obejct
-    saveKoala( koalaToSend );
+    addKoala( koalaToSend );
   }); 
 }
+//Post new Koala to the Server
+function addKoala(koalaToSend) {
+  $.ajax({
+    method: 'POST', 
+    url: '/koalas', 
+    data: koalaToSend
+  })
+  .then(function (response) {
+    console.log('Claws!!');
+    getKoalas();
+  })
+  .catch(function (error) {
+    alert('request failed');
+  })
+}
 
-function getKoalas(){
+
+// send koalas list to the dom
+function getKoalas() {
   console.log( 'in getKoalas' );
-  // ajax call to server to get koalas
-  
-} // end getKoalas
+  $.ajax({
+    method: 'GET',
+    url: '/koalas',
+  })
+    .then(result => {
+      console.log('GET /koalas', result);
+      $('#viewKoalas').empty();
+        for (let koalaToSend of result) {
+          $('#viewKoalas').append(
+            `<tr>
+              <td>${koalaToSend.koalaName}</td> 
+              <td>${koalaToSend.koalaAge} </td>
+              <td>${koalaToSend.koalaGender}</td> 
+              <td>${koalaToSend.readyToTransfer}</td> 
+              <td>${koalaToSend.koalaNote}</td>
+              <td></td>
+              <td></td>
+            </tr>`
+          );
+      }
+    })
+    .catch(err => {
+      console.log(' GET /koalas', err);
+    })
+}
 
-function saveKoala( newKoala ){
-  console.log( 'in saveKoala', newKoala );
-  // ajax call to server to get koalas
- 
+
+function saveKoala() {
+  $.ajax({
+    method: 'GET',
+    url: '/koalas'
+  })
+  .then(function (response) { 
+    console.log('Claws!!', response);
+  })
+  .catch(function (error) { 
+    console.log('Error!', error)
+  });
 }
