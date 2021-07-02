@@ -3,13 +3,11 @@ const router = express.router();
 
 const pool = require('./modules/pool');
 
-
-
 // DB CONNECTION
 // GET
 
 router.get('/', (req, res) => {
-    console.log('Inside app.get', req);
+    console.log('Inside router.get', req);
     let queryText = 'SELECT * FROM koalas;';
     pool.query(queryText)
       .then((results) => {
@@ -20,15 +18,14 @@ router.get('/', (req, res) => {
     });
   })
   
-
 // POST
 
 router.post('/', (req, res) => {
-    console.log('Inside app.post', req);
+    console.log('Inside router.post', req);
     const koalaData = req.body;
     const queryText = `INSERT INTO koalas ( name, gender, age, readyToTransfer, note)
                       VALUE ($1, $2, $3, $4, $5);`;                     
-    pool.query(queryText, [koalaData.name, koalaData.gender, koalaData.age, koalaData.readyToTransfer, koalaData.readyToTransfer, koalaData.note] )
+    pool.query(queryText, [koalaData.name, koalaData.gender, koalaData.age, koalaData.readyToTransfer, koalaData.note] )
     .then((results) => {
       res.sendStatus(201);
     })
@@ -42,11 +39,22 @@ router.post('/', (req, res) => {
 // PUT
 
 router.put('/:id', (req, res) => {
-    console.log('inside app.put', req.params.id);
+    console.log('inside router.put', req.params.id);
+    const koalaData = req.body;
     const koalaID = req.params.id;
 // we need to create a sql statement where we UPDATE INTO koalas
+    const queryText = `UPDATE koalas SET “readyToTransfer” = $1, WHERE id = $2;`; 
+    pool.query(queryText, [koalaData.readyToTransfer, koalaID.id])
   
-  })
+    })
+    .then((response) => {
+        console.log('Updated ready to transfer', response.rows);
+        res.sendStatus(201);
+    }
+    ).catch((error) => {
+        console.log('error updating ready to transfer', error);
+        res.sendStatus(500);
+    });
 
 // DELETE
 
