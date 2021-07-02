@@ -17,8 +17,8 @@ function setupClickListeners() {
     // using a test object
     let koalaToSend = {
        koalaName: $('#koalaName').val(),
-       koalaAge: $('#koalaAge').val(),
        koalaGender: $('#koalaGender').val(),
+       koalaAge: $('#koalaAge').val(),
        readyToTransfer: $('#readyToTransfer').val(),
        koalaNote: $('#koalaNote').val(),
     };
@@ -56,11 +56,11 @@ function getKoalas() {
         for (let koalaToSend of result) {
           $('#viewKoalas').append(
             `<tr>
-              <td>${koalaToSend.koalaName}</td> 
-              <td>${koalaToSend.koalaAge} </td>
-              <td>${koalaToSend.koalaGender}</td> 
+              <td>${koalaToSend.name}</td> 
+              <td>${koalaToSend.gender}</td> 
+              <td>${koalaToSend.age} </td>
               <td>${koalaToSend.readyToTransfer}</td> 
-              <td>${koalaToSend.koalaNote}</td>
+              <td>${koalaToSend.notes}</td>
               <td></td>
               <td></td>
             </tr>`

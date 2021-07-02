@@ -1,7 +1,9 @@
-const express = require('express');
-const router = express.router();
 
-const pool = require('./modules/pool');
+const pool = require('../modules/pool');
+
+const express = require('express');
+const router = express.Router();
+
 
 // DB CONNECTION
 // GET
@@ -16,16 +18,16 @@ router.get('/', (req, res) => {
     .catch((error) => {
       console.log(`error making query ${queryText}`, error);
     });
-  })
+  });
   
 // POST
 
 router.post('/', (req, res) => {
     console.log('Inside router.post', req);
     const koalaData = req.body;
-    const queryText = `INSERT INTO koalas ( name, gender, age, readyToTransfer, note)
-                      VALUE ($1, $2, $3, $4, $5);`;                     
-    pool.query(queryText, [koalaData.name, koalaData.gender, koalaData.age, koalaData.readyToTransfer, koalaData.note] )
+    const queryText = `INSERT INTO koalas ( "name", "gender", "age", "readyToTransfer", "notes")
+                      VALUES ($1, $2, $3, $4, $5);`;                     
+    pool.query(queryText, [koalaData.koalaName, koalaData.koalaGender, koalaData.koalaAge, koalaData.readyToTransfer, koalaData.koalaNote] )
     .then((results) => {
       res.sendStatus(201);
     })
@@ -45,16 +47,14 @@ router.put('/:id', (req, res) => {
 // we need to create a sql statement where we UPDATE INTO koalas
     const queryText = `UPDATE koalas SET “readyToTransfer” = $1, WHERE id = $2;`; 
     pool.query(queryText, [koalaData.readyToTransfer, koalaID.id])
-  
-    })
     .then((response) => {
         console.log('Updated ready to transfer', response.rows);
         res.sendStatus(201);
-    }
-    ).catch((error) => {
+    }).catch((error) => {
         console.log('error updating ready to transfer', error);
         res.sendStatus(500);
-    });
+    })
+  });
 
 // DELETE
 
@@ -65,15 +65,14 @@ router.delete('/:id', (req, res) => {
     
     const queryText = `DELETE FROM koalas WHERE id = $1;`;
     pool.query(queryText, [koalaID.id])
-
-    })
     .then((response) => {
-        console.log('Deleted koala from dataset', ${response.rowCount ===1});
+        console.log('Deleted koala from dataset');
         res.sendStatus(201);
     })
     .catch((error) => {
         console.log(`Could not delete koala with id ${koalaID}`, error);
         res.sendStatus(500);
     })
+  });
 
-module.exports = koalaRouter;
+module.exports = router;
