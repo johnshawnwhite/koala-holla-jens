@@ -68,7 +68,7 @@ router.delete('/:id', (req, res) => {
 
     })
     .then((response) => {
-        console.log('Deleted koala from dataset', ${response.rowCount ===1});
+        console.log(`Deleted koala from dataset, ${response.rowCount ===1}`);
         res.sendStatus(202);
     })
     .catch((error) => {
